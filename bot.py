@@ -7,8 +7,8 @@ TOKEN = os.getenv("BOT_TOKEN")
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
         [InlineKeyboardButton("🔍 Начать знакомство", callback_data="start_match")],
-        [InlineKeyboardButton("📖 Правила", url="https://example.com/rules")],
-        [InlineKeyboardButton("📢 Спонсоры", url="https://t.me/your_sponsor_channel")]
+        [InlineKeyboardButton("📢Спонсор1", url="https://t.me/kinoseriallivbot")],
+        [InlineKeyboardButton("📢 Спонсор2", url="https://t.me/kinoseriallivbot")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
