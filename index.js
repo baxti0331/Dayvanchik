@@ -1,13 +1,11 @@
-const express = require('express');
-const axios = require('axios');
-
-const app = express();
-app.use(express.json());
+import axios from 'axios';
 
 const TOKEN = process.env.BOT_TOKEN;
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
 
-app.post(`/webhook/${TOKEN}`, async (req, res) => {
+export default async function handler(req, res) {
+  if (req.method !== 'POST') return res.status(405).send('Method Not Allowed');
+
   const update = req.body;
 
   try {
@@ -26,11 +24,5 @@ app.post(`/webhook/${TOKEN}`, async (req, res) => {
     console.error('Ошибка при обработке сообщения:', error.message);
   }
 
-  // Подтверждаем Telegram, что запрос принят
-  res.sendStatus(200);
-});
-
-const port = process.env.PORT || 4000;
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+  res.status(200).end();
+}
