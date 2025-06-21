@@ -1,10 +1,9 @@
+import os
 from flask import Flask, request, Response
 from telegram import Bot, Update
 from telegram.ext import Dispatcher, CommandHandler, MessageHandler, Filters
 
-import os
-
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = os.getenv("BOT_TOKEN")  # токен берём из переменной окружения
 bot = Bot(token=TOKEN)
 app = Flask(__name__)
 
